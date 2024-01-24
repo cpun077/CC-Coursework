@@ -1,13 +1,16 @@
-v <- c(1, 9, 5, 3, 4, 2, 8, 7, 6, 10)
+v <- sample(1:100, 10, replace = FALSE)
+print(paste("Vector of 10 randomly sampled # between 1 and 100 without replacement:", paste(v, collapse = " ")))
+
 for (num in v) {
     if (num %% 2 == 0) {
-        print(paste(num, "is an even number."))
+        print(paste(num, "is an even #."))
     } else {
-        print(paste(num, "is an odd number."))
+        print(paste(num, "is an odd #."))
     }
 }
 
 # Extra stuff
+print("******************************")
 range_vector <- 1:10
 
 print(seq(1, 10, by = 1))
