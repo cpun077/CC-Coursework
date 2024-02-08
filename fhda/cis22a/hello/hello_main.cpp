@@ -35,7 +35,7 @@ int main()
     cout << str << endl;
 
     // continue keyword; idk when to use just something i didnt know
-    // arrays passed into function params are actually pointers
+    // arrays passed into function params are actually pointers unless "const" is used
 
     return 0;
 }
