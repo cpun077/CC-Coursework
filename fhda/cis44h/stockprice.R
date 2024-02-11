@@ -32,7 +32,13 @@ axis(
     cex.axis = 0.7
     )
 
-# add volume bar plot
+# calculate midpoints of bars in volume bar plot
+bp <- barplot(
+    volume,  
+    space = 0, 
+    plot = FALSE
+    )
+# plot the volume bar plot with midpoints centered
 par(new = TRUE)
 barplot(
     volume,  
@@ -41,6 +47,7 @@ barplot(
     border = rgb(1, 0, 0),
     yaxt = "n",
     ylim = c(0, max(volume)),
+    xlim = c(diff(bp)[1] / 2, 33 - diff(bp)[1] / 2)
     )
 
 # add secondary y axis
@@ -55,7 +62,7 @@ axis(
 mtext("Volume", side = 4, line = 4.5)
 
 # mean/median of closing price
-print(paste("Mean and Median Closing Price are", mean(prices), "and", median(prices), "respectively"))
+print(paste("Mean (Average) and Median Closing Price are", mean(prices), "and", median(prices), "respectively"))
 
 # total volume of shares traded in 2021
 print(paste("Total Volume of Shares traded in 2021 is", sum(volume)))
