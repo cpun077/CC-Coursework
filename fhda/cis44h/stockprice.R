@@ -1,10 +1,8 @@
-# math - abs(), sign(), ceiling/floor(), exp/log/log2/log10()
-# statistics - for cumulative add cum(min/max()), sum/prod/diff(), mean/median/mode()
-# matrices - t() transpose, %*% multiply, det() determinant, solve() inverse
+# Author - Caden Pun
 
 # read the apple stock csv and allow the slash in the header
-setwd("C:/users/irons/documents/github/cs-coursework/fhda")
-data <- read.csv(file = "cis44h/AAPL_2021.csv", check.names = FALSE)
+setwd("C:/users/irons/documents/github/cs-coursework/fhda/cis44h")
+data <- read.csv(file = "AAPL_2021.csv", check.names = FALSE)
 
 # get the data in chronological order
 prices <- rev(as.numeric(gsub("\\$", "", data[, 2])))
@@ -64,5 +62,8 @@ mtext("Volume", side = 4, line = 4.5)
 # mean/median of closing price
 print(paste("Mean (Average) and Median Closing Price are", mean(prices), "and", median(prices), "respectively"))
 
-# total volume of shares traded in 2021
+# mean/median of volume of shares traded
+print(paste("Mean (Average) and Median Volume of Shares traded are", mean(volume), "and", median(volume), "respectively"))
+
+# total volume of shares traded
 print(paste("Total Volume of Shares traded in 2021 is", sum(volume)))
