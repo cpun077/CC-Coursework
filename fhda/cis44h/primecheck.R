@@ -13,13 +13,16 @@ repeat {
     }
 }
 
-# test if the integer is a prime number
-# we don't have to check for 1 since its an integer
-# number is >=2 based on our range check so we don't have to check for 0 or 1
-if (i %% 2 == 0 && i != 2) {
-    print(paste(i, "is divisible by 2"))
-} else if (i %% 3 == 0 && i != 3) {
-    print(paste(i, "is divisible by 3"))
-} else {
+prime <- function(num) {
+    if (num == 1) return(list(FALSE, 1))
+    for (factor in 2:ceiling(sqrt(num))) {
+        if (num %% factor == 0) return(list(FALSE, factor))
+    }
+    return(list(TRUE, 1))
+}
+
+if (prime(i)[[1]]) {
     print(paste(i, "is a prime number"))
+} else {
+    print(paste(i, "is divisible by", prime(i)[[2]]))
 }
