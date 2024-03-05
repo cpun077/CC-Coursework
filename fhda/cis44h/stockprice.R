@@ -2,7 +2,7 @@
 
 # read the apple stock csv and allow the slash in the header
 setwd("C:/users/irons/documents/github/cs-coursework/fhda/cis44h")
-data <- read.csv(file = "AAPL_2021.csv", check.names = FALSE)
+data <- read.csv(file = "resources/AAPL_2021.csv", check.names = FALSE)
 
 # get the data in chronological order
 prices <- rev(as.numeric(gsub("\\$", "", data[, 2])))

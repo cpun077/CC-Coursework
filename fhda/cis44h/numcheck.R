@@ -59,7 +59,7 @@ print(str(d))
 print(summary(d))
 
 # input
-goat <- readline("Who's the goat")
+goat <- readline("Who's the goat: ")
 print(paste(goat, "is the goat"))
 
 # scan
@@ -69,5 +69,5 @@ insertcity <- scan(what="character", file="cis44a/resources/insert_city.sql", nl
 print(paste(insertcity, collapse = " "))
 
 library("xlsx")
-excel <- read.xlsx(file = "cis44h/sqlspreadsheet.xlsx", sheetIndex = 1)
+excel <- read.xlsx(file = "cis44h/resources/sqlspreadsheet.xlsx", sheetIndex = 1)
 print(excel)
