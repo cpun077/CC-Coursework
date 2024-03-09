@@ -1,3 +1,6 @@
+library(dotenv)
+load_dot_env()
+
 v <- sample(1:100, 10, replace = FALSE)
 print(paste("Vector of 10 randomly sampled # between 1 and 100 without replacement:", paste(v, collapse = " ")))
 
@@ -64,10 +67,11 @@ print(paste(goat, "is the goat"))
 
 # scan
 # read.csv()/read.table()/write.csv()/write.table() for csvs
-setwd("C:/users/irons/documents/github/cs-coursework/fhda")
-insertcity <- scan(what="character", file="cis44a/resources/insert_city.sql", nlines=2, nmax=10)
+dir <- Sys.getenv("REPO_DIR")
+setwd(dir)
+insertcity <- scan(what="character", file="fhda/cis44a/resources/insert_city.sql", nlines=2, nmax=10)
 print(paste(insertcity, collapse = " "))
 
 library("xlsx")
-excel <- read.xlsx(file = "cis44h/resources/sqlspreadsheet.xlsx", sheetIndex = 1)
+excel <- read.xlsx(file = "fhda/cis44h/resources/sqlspreadsheet.xlsx", sheetIndex = 1)
 print(excel)

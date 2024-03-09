@@ -4,7 +4,6 @@
 #include "methods.h"
 using namespace std;
 
-// to run, cd C:\users\ then cd the username then the folder's dir
 int main()
 {
     cout << "Caden's Hello World for CPP (this language sucks)" << endl;
