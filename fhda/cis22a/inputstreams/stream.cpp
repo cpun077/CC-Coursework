@@ -7,15 +7,41 @@ void Stream::setIStr(string s) {
     istr.str(s);
     string input;
     istr >> input;
-    cout << "First word is: " << input << endl;
+    cout << "First string is: " << input << endl;
 }
 
 void Stream::setOStr(string s) {
-
+    ostr.clear();
+    ostr << s;
+    cout << "Output string stream: " << ostr.str() << endl;
 }
 
 void Stream::setIFile(string s) {
+    string filestring;
+    cout << "Opening file" << endl;
+    ifile.open(s);
 
+    if (!ifile.is_open()) {
+        cout << "Could not open file" << endl;
+        return;
+    }
+
+    while (!ifile.eof() && ifile.good()) {
+        ifile >> filestring;
+
+        if (!ifile.fail()) {
+            cout << filestring << " ";
+        }
+    }
+    cout << endl;
+
+    if (!ifile.eof()) {
+        cout << "Error reading file (Could not close)" << endl;
+        return;
+    }
+
+    cout << "Closing File" << endl;
+    ifile.close();
 }
 
 void Stream::setOFile(string s) {

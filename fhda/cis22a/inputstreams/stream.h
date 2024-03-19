@@ -1,5 +1,4 @@
-#ifndef stream_h
-#define stream_h
+#pragma once
 #include <string>
 #include <sstream>
 #include <fstream>
@@ -19,5 +18,3 @@ class Stream {
         std::ofstream ofile;
 
 };
-
-#endif

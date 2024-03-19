@@ -7,16 +7,16 @@ int main()
     Stream s;
     string inputStr;
 
-    cout << "Set input string stream here: ";
+    cout << "Write some text to be set to an input string: ";
     getline(cin, inputStr);
     s.setIStr(inputStr);
-    cout << "Set output string stream here: ";
+    cout << "Write some text to be echoed by an output string: ";
     getline(cin, inputStr);
     s.setOStr(inputStr);
-    cout << "Set input file stream here: ";
+    cout << "Give a directory to an input file to read: ";
     getline(cin, inputStr);
     s.setIFile(inputStr);
-    cout << "Set ouput file stream here: ";
+    cout << "Write some text to set to an output file: ";
     getline(cin, inputStr);
     s.setOFile(inputStr);
 
