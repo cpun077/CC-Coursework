@@ -36,14 +36,24 @@ void Stream::setIFile(string s) {
     cout << endl;
 
     if (!ifile.eof()) {
-        cout << "Error reading file (Could not close)" << endl;
+        cout << "Error reading file" << endl;
         return;
     }
 
-    cout << "Closing File" << endl;
+    cout << "Closing File (" << s << ")" << endl;
     ifile.close();
 }
 
 void Stream::setOFile(string s) {
-    
+    ofile.open("streamoutput.txt");
+
+    if (!ofile.is_open()) {
+    cout << "Could not open file" << endl;
+    return;
+    }
+
+    ofile << s << endl;
+
+    cout << "Closing File (streamoutput.txt)" << endl;
+    ofile.close();
 }
