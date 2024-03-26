@@ -1,0 +1,15 @@
+Letter: a, Count: 64
+Letter: c, Count: 35
+Letter: d, Count: 26
+Letter: e, Count: 102
+Letter: n, Count: 66
+Digit: 0, Count: 1
+Digit: 1, Count: 0
+Digit: 4, Count: 2
+Digit: 5, Count: 1
+Digit: 6, Count: 0
+Digit: 7, Count: 0
+Digit: 8, Count: 0
+Digit: 9, Count: 0
+Lines: 42
+Letters: 890

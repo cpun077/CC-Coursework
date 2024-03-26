@@ -1,0 +1,42 @@
+
+Hello, this is CS22A course.
+DeAnza College
+Fall Quarter.
+This file has four text lines.
+
+Line number one.
+This is another line; number two.
+A third line is added.
+Now, we have four lines.
+But this is a longer file.
+So, we made it six lines.
+
+This is your first C++ assignment.  The main purpose of this assignment is to make sure you are set to go in this class and know how to write a simple hello code and compile.
+
+The program should write a short letter to me like:
+
+My name is Fred Flintstone, and I am in high school/college/etc  any info you like to tell about yourself such as work, hobbies, etc.
+
+You can use many cout <<  statements; one for each line and end the line with << endl;
+
+4. Submit hello_main.cpp; you can include the output if you like by storing it in a file hello_out.txt (optional).
+
+Example: file hello.cpp
+
+#include <iostream>
+
+using namespace std;
+
+int main(void)
+{
+    cout << "Hello Students!" << endl;
+    cout << "Welcome to DeAnza College Class CIS22A.54Z" << endl
+
+    return 0;
+
+}
+
+You can submit your .cpp file or a link to your solution online
+
+Until I have DeAnza Canvas access, you submit via email to my personal email:
+To: hussein.deanza@edu   attache hello.cpp or main.cpp
