@@ -6,7 +6,6 @@ cis64CMax <- function(v) {
         if (!is.numeric(v[i]) || is.na(v[i])) return('NA')
         if (v[i] > max) {
             max <- v[i]
-            
         }
         v[i] <- max
     }
@@ -19,7 +18,6 @@ cis64CMin <- function(v) {
         if (!is.numeric(v[i]) || is.na(v[i])) return('NA')
         if (v[i] < min) {
             min <- v[i]
-            
         }
         v[i] <- min
     }
