@@ -1,9 +1,8 @@
 """ Print the characteristics of, and plays the sounds of, various mammals. """
-"Modifed by Caden Pun"
-
-import pygame
-import os
+# Modifed by Caden Pun and Raphael Gershater
 import time
+import os
+import pygame
 
 
 # Constants
@@ -119,6 +118,7 @@ class Lion(Mammal):
         """
         super().__init__(name)
         self.noise = "97380__soundbytez__african-lion.wav"
+
 
 def main():
     """Create and use objects of all the derived classes."""
