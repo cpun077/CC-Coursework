@@ -1,41 +1,63 @@
-Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/21/25 14:27:36
-LabExercise4.asm					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/21/25 16:27:44
+Assignment4.asm						     Page 1 - 1
 
 
-				; Assignment #: Lab Exercise 4
+				; Assignment #: 4
 				; Program Description: Subtract two sums
 				; Author: Caden Pun (student: 2164581)
 				; Creation Date: 2/21/25
-				; Revisions: 
+				; Revisions: 0
 				; Date:              Modified by:
+				comment /
+					All the variable declarations are 4 bytes for the memory allocation of a dword/sdword (32 bits = 4 bytes).
+					Move operations to/from the eax register take 5 bytes, 4 for the memory of the value, and 1 for the opcode (A1/A3).
+					Move operations to/from the ebx register take 6 bytes, 4 for the memory of the value, 1 for the opcode (8B), and 1 for the modRM byte (1D).
+					Addition between two registers takes two bytes, 1 for the opcode (03) and 1 for the modRM byte (C3).
+					Subtraction between memory and register takes 6 bytes, 1 for the opcode (29), 1 for the modRM byte (05), and 4 for the memory address.
+				/
 
 				.386
 				.model flat,stdcall
 				.stack 4096
 				ExitProcess PROTO, dwExitCode:DWORD
  00000000			.data
- 00000000 000001F4		a dword 500
- 00000004 000000C8		b dword 200
- 00000008 0000012C		x dword 300
- 0000000C 00000190		d dword 400
+ 00000000 00000000		sum dword ?
+ 00000004 000003E8		valueA dword 1000
+ 00000008 0000012C		valueB dword 300
+ 0000000C 000007D0		valueC dword 2000
+ 00000010 000001F4		valueD dword 500
+ 00000014 00000000		ssum sdword ?
+ 00000018 000003E8		svalueA sdword 1000
+ 0000001C 0000012C		svalueB sdword 300
+ 00000020 000007D0		svalueC sdword 2000
+ 00000024 000001F4		svalueD sdword 500
  00000000			.code
  00000000			main PROC
- 00000000  A1 00000000 R		mov eax, a
- 00000005  8B 1D 00000004 R		mov ebx, b
- 0000000B  8B 0D 00000008 R		mov ecx, x
- 00000011  8B 15 0000000C R		mov edx, d
-
- 00000017  03 C3			add eax, ebx
- 00000019  03 CA			add ecx, edx
- 0000001B  2B C1			sub eax, ecx
+ 00000000  A1 00000004 R		mov eax, valueA
+ 00000005  8B 1D 00000008 R		mov ebx, valueB
+ 0000000B  03 C3			add eax, ebx
+ 0000000D  A3 00000000 R		mov [sum], eax
+ 00000012  A1 0000000C R		mov eax, valueC
+ 00000017  8B 1D 00000010 R		mov ebx, valueD
+ 0000001D  03 C3			add eax, ebx
+ 0000001F  29 05 00000000 R		sub [sum], eax
+					
+ 00000025  A1 00000018 R		mov eax, svalueA
+ 0000002A  8B 1D 0000001C R		mov ebx, svalueB
+ 00000030  03 C3			add eax, ebx
+ 00000032  A3 00000014 R		mov [ssum], eax
+ 00000037  A1 00000020 R		mov eax, svalueC
+ 0000003C  8B 1D 00000024 R		mov ebx, svalueD
+ 00000042  03 C3			add eax, ebx
+ 00000044  29 05 00000014 R		sub [ssum], eax
 					INVOKE ExitProcess,0
- 0000001D  6A 00	   *	    push   +000000000h
- 0000001F  E8 00000000 E   *	    call   ExitProcess
- 00000024			main ENDP
+ 0000004A  6A 00	   *	    push   +000000000h
+ 0000004C  E8 00000000 E   *	    call   ExitProcess
+ 00000051			main ENDP
 				; (insert additional procedures here)
 				END main
-Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/21/25 14:27:36
-LabExercise4.asm					     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/21/25 16:27:44
+Assignment4.asm						     Symbols 2 - 1
 
 
 
@@ -46,8 +68,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000010 DWord	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000024 DWord	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000028 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000051 DWord	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -55,7 +77,7 @@ Procedures, parameters, and locals:
                 N a m e                 Type     Value    Attr
 
 ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000024 Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000051 Public STDCALL
 
 
 Symbols:
@@ -71,10 +93,16 @@ Symbols:
 @fardata?  . . . . . . . . . . .	Text   	 FLAT
 @fardata . . . . . . . . . . . .	Text   	 FLAT
 @stack . . . . . . . . . . . . .	Text   	 FLAT
-a  . . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
-b  . . . . . . . . . . . . . . .	DWord	 00000004 _DATA	
-d  . . . . . . . . . . . . . . .	DWord	 0000000C _DATA	
-x  . . . . . . . . . . . . . . .	DWord	 00000008 _DATA	
+ssum . . . . . . . . . . . . . .	DWord	 00000014 _DATA	
+sum  . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
+svalueA  . . . . . . . . . . . .	DWord	 00000018 _DATA	
+svalueB  . . . . . . . . . . . .	DWord	 0000001C _DATA	
+svalueC  . . . . . . . . . . . .	DWord	 00000020 _DATA	
+svalueD  . . . . . . . . . . . .	DWord	 00000024 _DATA	
+valueA . . . . . . . . . . . . .	DWord	 00000004 _DATA	
+valueB . . . . . . . . . . . . .	DWord	 00000008 _DATA	
+valueC . . . . . . . . . . . . .	DWord	 0000000C _DATA	
+valueD . . . . . . . . . . . . .	DWord	 00000010 _DATA	
 
 	   0 Warnings
 	   0 Errors

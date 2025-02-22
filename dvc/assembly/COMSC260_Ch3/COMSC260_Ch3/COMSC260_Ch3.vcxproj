@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="LabExercise4.asm" />
+    <MASM Include="Assignment4.asm" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F5B13653-F55B-416F-8460-2B9D1F3968F3}</ProjectGuid>
@@ -99,7 +99,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <MASM>
-      <GeneratePreprocessedSourceListing>false</GeneratePreprocessedSourceListing>
+      <GeneratePreprocessedSourceListing>true</GeneratePreprocessedSourceListing>
       <ListAllAvailableInformation>true</ListAllAvailableInformation>
       <AssembledCodeListingFile>$(ProjectName).lst</AssembledCodeListingFile>
     </MASM>
