@@ -1,9 +1,9 @@
-Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/25/25 12:50:24
-LabExercise5.asm					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/26/25 18:45:57
+Assignment5.asm						     Page 1 - 1
 
 
-				; Assignment #: Lab Exercise 5
-				; Program Description: 
+				; Assignment #: 5
+				; Program Description: converting from Big Endian to Little Endian with ptr
 				; Author: Caden Pun (student: 2164581)
 				; Creation Date: 2/25/25
 				; Revisions: 0
@@ -14,35 +14,33 @@ LabExercise5.asm					     Page 1 - 1
 				.stack 4096
 				ExitProcess PROTO, dwExitCode:DWORD
  00000000			.data
- 00000000 0064			intA word 100
- 00000002 FF9C			intB sword -100
- 00000004 00000001		arrayD dword 1,2,3,4
-	   00000002
-	   00000003
-	   00000004
+ 00000000 12 34 56 78		bigEndian byte 12h, 34h, 56h, 78h
+ 00000004 00000000		littleEndian dword ?
  00000000			.code
  00000000			main PROC
- 00000000  0F B7 1D			movzx ebx, intA
-	   00000000 R
- 00000007  0F BF 15			movsx edx, intB
-	   00000002 R
+ 00000000  A1 00000000 R		mov eax, dword ptr bigEndian
+ 00000005  A3 00000004 R		mov littleEndian, eax
 
- 0000000E  A1 00000004 R		mov eax, arrayD
- 00000013  87 05 00000010 R		xchg eax, arrayD+12
- 00000019  A3 00000004 R		mov arrayD, eax
+ 0000000A  A0 00000003 R		mov al, byte ptr bigEndian+3 ; 78h
+ 0000000F  A2 00000004 R		mov byte ptr littleEndian, al
 
- 0000001E  A1 00000008 R		mov eax, arrayD+4
- 00000023  87 05 0000000C R		xchg eax, arrayD+8
- 00000029  A3 00000008 R		mov arrayD+4, eax
+ 00000014  A0 00000002 R		mov al, byte ptr bigEndian+2 ; 56h
+ 00000019  A2 00000005 R		mov byte ptr littleEndian+1, al
+
+ 0000001E  A0 00000001 R		mov al, byte ptr bigEndian+1 ; 34h
+ 00000023  A2 00000006 R		mov byte ptr littleEndian+2, al
+
+ 00000028  A0 00000000 R		mov al, byte ptr bigEndian ; 12h
+ 0000002D  A2 00000007 R		mov byte ptr littleEndian+3, al
 
 					INVOKE ExitProcess,0
- 0000002E  6A 00	   *	    push   +000000000h
- 00000030  E8 00000000 E   *	    call   ExitProcess
- 00000035			main ENDP
+ 00000032  6A 00	   *	    push   +000000000h
+ 00000034  E8 00000000 E   *	    call   ExitProcess
+ 00000039			main ENDP
 				; (insert additional procedures here)
 				END main
-Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/25/25 12:50:24
-LabExercise5.asm					     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/26/25 18:45:57
+Assignment5.asm						     Symbols 2 - 1
 
 
 
@@ -53,8 +51,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000014 DWord	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000035 DWord	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000008 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000039 DWord	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -62,7 +60,7 @@ Procedures, parameters, and locals:
                 N a m e                 Type     Value    Attr
 
 ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000035 Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000039 Public STDCALL
 
 
 Symbols:
@@ -78,9 +76,8 @@ Symbols:
 @fardata?  . . . . . . . . . . .	Text   	 FLAT
 @fardata . . . . . . . . . . . .	Text   	 FLAT
 @stack . . . . . . . . . . . . .	Text   	 FLAT
-arrayD . . . . . . . . . . . . .	DWord	 00000004 _DATA	
-intA . . . . . . . . . . . . . .	Word	 00000000 _DATA	
-intB . . . . . . . . . . . . . .	Word	 00000002 _DATA	
+bigEndian  . . . . . . . . . . .	Byte	 00000000 _DATA	
+littleEndian . . . . . . . . . .	DWord	 00000004 _DATA	
 
 	   0 Warnings
 	   0 Errors

@@ -1,5 +1,5 @@
 ; Assignment #: Lab Exercise 5
-; Program Description: 
+; Program Description: Practice using movsx, movzx, xchg
 ; Author: Caden Pun (student: 2164581)
 ; Creation Date: 2/25/25
 ; Revisions: 0

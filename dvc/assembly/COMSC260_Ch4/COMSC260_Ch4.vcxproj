@@ -83,7 +83,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <MASM>
-      <GeneratePreprocessedSourceListing>true</GeneratePreprocessedSourceListing>
+      <GeneratePreprocessedSourceListing>false</GeneratePreprocessedSourceListing>
     </MASM>
     <MASM>
       <ListAllAvailableInformation>true</ListAllAvailableInformation>
@@ -135,8 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <MASM Include="LabExercise5.asm">
-      <FileType>Document</FileType>
+    <MASM Include="Assignment5.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </MASM>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
