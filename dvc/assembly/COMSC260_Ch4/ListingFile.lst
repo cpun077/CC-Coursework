@@ -1,46 +1,52 @@
-Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/26/25 18:45:57
-Assignment5.asm						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.42.34436.0	    03/05/25 18:05:14
+LabExercise6.asm					     Page 1 - 1
 
 
-				; Assignment #: 5
-				; Program Description: converting from Big Endian to Little Endian with ptr
+				; Assignment #: Lab Exercise 6
+				; Program Description: Copying a string in reverse
 				; Author: Caden Pun (student: 2164581)
-				; Creation Date: 2/25/25
+				; Creation Date: 3/5/25
 				; Revisions: 0
 				; Date:              Modified by:
 
 				.386
 				.model flat,stdcall
 				.stack 4096
-				ExitProcess PROTO, dwExitCode:DWORD
+				ExitProcess PROTO, dwExitCode:dword
+
  00000000			.data
- 00000000 12 34 56 78		bigEndian byte 12h, 34h, 56h, 78h
- 00000004 00000000		littleEndian dword ?
+ 00000000 54 68 69 73 20	source  byte  "This is the source string",0
+	   69 73 20 74 68
+	   65 20 73 6F 75
+	   72 63 65 20 73
+	   74 72 69 6E 67
+	   00
+ 0000001A  0000001A [		target  byte  SIZEOF source DUP(0),0
+	    00
+	   ] 00
+
  00000000			.code
- 00000000			main PROC
- 00000000  A1 00000000 R		mov eax, dword ptr bigEndian
- 00000005  A3 00000004 R		mov littleEndian, eax
+ 00000000			main proc
 
- 0000000A  A0 00000003 R		mov al, byte ptr bigEndian+3 ; 78h
- 0000000F  A2 00000004 R		mov byte ptr littleEndian, al
+ 00000000  BE 00000000 R		mov  esi, OFFSET source	; indirect addressing register
+ 00000005  BF 0000001A R		mov  edi, OFFSET target	; indirect addressing register
+ 0000000A  B9 0000001A			mov  ecx, SIZEOF source	; loop counter
+ 0000000F  03 F1			add esi, ecx
+ 00000011  4E				dec esi                 ; start at last char (size - 1)
+ 00000012			L1:
+ 00000012  8A 06			mov  al, [esi]			; get a character from source
+ 00000014  88 07			mov  [edi],al			; store it in the target
+ 00000016  4E				dec  esi				; move to next character (backwards)
+ 00000017  47				inc  edi				; move to next character
+ 00000018  E2 F8			loop L1					; repeat for entire string
 
- 00000014  A0 00000002 R		mov al, byte ptr bigEndian+2 ; 56h
- 00000019  A2 00000005 R		mov byte ptr littleEndian+1, al
-
- 0000001E  A0 00000001 R		mov al, byte ptr bigEndian+1 ; 34h
- 00000023  A2 00000006 R		mov byte ptr littleEndian+2, al
-
- 00000028  A0 00000000 R		mov al, byte ptr bigEndian ; 12h
- 0000002D  A2 00000007 R		mov byte ptr littleEndian+3, al
-
-					INVOKE ExitProcess,0
- 00000032  6A 00	   *	    push   +000000000h
- 00000034  E8 00000000 E   *	    call   ExitProcess
- 00000039			main ENDP
-				; (insert additional procedures here)
-				END main
-Microsoft (R) Macro Assembler Version 14.42.34436.0	    02/26/25 18:45:57
-Assignment5.asm						     Symbols 2 - 1
+					invoke ExitProcess,0
+ 0000001A  6A 00	   *	    push   +000000000h
+ 0000001C  E8 00000000 E   *	    call   ExitProcess
+ 00000021			main endp
+				end main
+Microsoft (R) Macro Assembler Version 14.42.34436.0	    03/05/25 18:05:14
+LabExercise6.asm					     Symbols 2 - 1
 
 
 
@@ -51,8 +57,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000008 DWord	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000039 DWord	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000035 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000021 DWord	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -60,7 +66,8 @@ Procedures, parameters, and locals:
                 N a m e                 Type     Value    Attr
 
 ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000039 Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000021 Public STDCALL
+  L1 . . . . . . . . . . . . . .	L Near	 00000012 _TEXT	
 
 
 Symbols:
@@ -76,8 +83,8 @@ Symbols:
 @fardata?  . . . . . . . . . . .	Text   	 FLAT
 @fardata . . . . . . . . . . . .	Text   	 FLAT
 @stack . . . . . . . . . . . . .	Text   	 FLAT
-bigEndian  . . . . . . . . . . .	Byte	 00000000 _DATA	
-littleEndian . . . . . . . . . .	DWord	 00000004 _DATA	
+source . . . . . . . . . . . . .	Byte	 00000000 _DATA	
+target . . . . . . . . . . . . .	Byte	 0000001A _DATA	
 
 	   0 Warnings
 	   0 Errors
