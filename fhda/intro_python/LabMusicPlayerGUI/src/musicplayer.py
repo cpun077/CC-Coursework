@@ -77,6 +77,10 @@ class MusicPlayer:
         Button(searchframe, text="Search",
                command=self.search).grid(row=1, column=2, padx=1, pady=1)
 
+        # TEAM LAB: EVENTS
+        # binds Return event to our Entry widget so we can search without clicking the button
+        search_input.bind('<Return>', lambda event: self.search())
+
         # Changing directory for fetching songs
         os.chdir("./music")
         # Inserting songs into playlist
