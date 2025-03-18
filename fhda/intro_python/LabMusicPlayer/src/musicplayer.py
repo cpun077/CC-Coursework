@@ -168,7 +168,8 @@ class MusicPlayer():
                 print("")
             elif command.isnumeric():
                 num = int(command)
-                self.playsong(num)
+                if num < len(self.playlist):
+                    self.playsong(num)
                 print("")
 
         self.stopsong()
