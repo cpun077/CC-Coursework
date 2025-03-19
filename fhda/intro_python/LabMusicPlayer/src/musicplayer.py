@@ -79,13 +79,41 @@ class MusicPlayer():
         for id, track in enumerate(self.playlist):
             print(f'{id}' + " " + track)
 
+    def searchInput(self, songs):
+        """User prompt with songs from a search."""
+        command = ''
+        while not command == 'q':
+            for id, track in enumerate(songs):
+                print(f'{id}' + " " + track)
+            print("Type the song number to play it,\nor r to refresh the list,\nor s to search the list,\nor q to quit:")
+            raw_command = input("")
+            command = raw_command.strip().casefold()
+            print(raw_command)
+
+            if command == "r":
+                return False
+            elif command == "s":
+                if self.search():
+                    self.stopsong()
+                    return False
+            elif command.isnumeric():
+                num = int(command)
+                if num < len(songs):
+                    selected_song = songs[num]
+                    full_index = self.playlist.index(selected_song)
+                    self.playsong(full_index)
+
+            if not command == 'q':
+                print()
+        return True
+
     def search(self):
         """
         TODO: Explain below in this docstring what an algorithm is.
         Then explain how your search algorithm is implemented in this method.
         Use a least two full sentences of U.S. English.
 
-        An algorithm is a step-by-step procedure that maps inputs to correct outputs. 
+        An algorithm is a step-by-step procedure that maps inputs to desired outputs. 
         An algorithm has a finite set of well-defined instructions that solves a variety of problems.
 
         Allows a user to search the playlist with an input string. 
@@ -101,11 +129,11 @@ class MusicPlayer():
         print("and then hit your return key:")
         # TODO: Complete this search method, you must catch exceptions
         searchStr = input('').strip().casefold()
-        print("Searching..." + f'{searchStr} \n')
+        print("Searching..." + f'{searchStr}' + '\n')
         songs = []
         try:
-            for song in self.playlist: 
-                if searchStr in song.casefold(): 
+            for song in self.playlist:
+                if searchStr in song.casefold():
                     songs.append(song)
             if not songs:
                 raise Exception("No songs were found!")
@@ -113,29 +141,7 @@ class MusicPlayer():
             print(e)
             return False
 
-        command = ''
-        while  command != 'q':
-            for id, track in enumerate(songs):
-                print(f'{id}' + " " + track)
-            print("Type the song number to play it,")
-            print("or r to refresh the list, ")
-            print("or s to search the list, ")
-            print("or q to quit:")
-            command = input("").strip().casefold()
-
-            if command == "r":
-                return False
-            elif command == "s":
-                if self.search():
-                    self.stopsong()
-                    return False
-                print('')
-            elif command.isnumeric():
-                num = int(command)
-                self.playsong(num)
-                print("")
-
-        return True
+        return self.searchInput(songs)
 
     def main(self):
         """TODO: Prompt user and play songs based on typed input."""
@@ -150,27 +156,29 @@ class MusicPlayer():
         # Do NOT catch exceptions.
 
         command = ''
-        while  command != 'q':
+        while not command == 'q':
             self.printlist()
             print("Type the song number to play it,")
             print("or r to refresh the list, ")
             print("or s to search the list, ")
             print("or q to quit:")
-            command = input("").strip().casefold()
+            raw_command = input("")
+            command = raw_command.strip().casefold()
+            print(raw_command)
 
             if command == "r":
                 self.refreshlist()
-                print("")
             elif command == "s":
                 if self.search():
                     self.stopsong()
                     return
-                print("")
             elif command.isnumeric():
                 num = int(command)
                 if num < len(self.playlist):
                     self.playsong(num)
-                print("")
+
+            if not command == 'q':
+                print()
 
         self.stopsong()
 
@@ -184,3 +192,213 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+Welcome to Music Player!
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the song number to play it,
+or r to refresh the list, 
+or s to search the list, 
+or q to quit:
+five
+five
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+5
+5
+Playing Fadeinandfadeout.mp3
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+16
+16
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+R
+R
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+s
+s
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the characters you want to search for
+and then hit your return key:
+hello
+Searching...hello
+
+0 Grand Baba - Hello.mp3
+1 Hello.ogg
+2 Hello.wav
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+0
+0
+Playing Grand Baba - Hello.mp3
+
+0 Grand Baba - Hello.mp3
+1 Hello.ogg
+2 Hello.wav
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+r
+r
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+1
+1
+Playing BooleanOperators.mp3
+
+0 AutomaticMixing2.mp3
+1 BooleanOperators.mp3
+2 Comments.mp3
+3 DJ Shiftee People Power Remix - 350RadioWaves.mp3
+4 DJ Shiftee vs. Grand Baba - People Power Remix.mp3
+5 Fadeinandfadeout.mp3
+6 Grand Baba - Hello.mp3
+7 Grand Baba - Hip-Hop.mp3
+8 Hello.ogg
+9 Hello.wav
+10 HIPHOP_MUTED_GUITAR_Sorted.mp3
+11 Incrementing.mp3
+12 IntroScript.mp3
+13 People Power (Extended Version w_ Arabic) - 350RadioWaves.mp3
+14 RhythmicRamps.mp3
+15 TotalAtlantaSongofSummer.mp3
+Type the song number to play it,
+or r to refresh the list,
+or s to search the list,
+or q to quit:
+q
+q
+-Stopped
+"""
