@@ -47,7 +47,8 @@ class MusicPlayer():
         # TODO: Use a list comprehension to:
         # set self.playlist to a list of filenames that do not start with "."
         # from the templist
-        self.playlist = [filename for filename in templist if not filename.startswith('.')]
+        self.playlist = [
+            filename for filename in templist if not filename.startswith('.')]
 
     def playsong(self, playlistIndex):
         """Plays the file in the playlist whose index is playlistIndex.
