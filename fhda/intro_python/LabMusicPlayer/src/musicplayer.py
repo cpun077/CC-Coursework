@@ -47,7 +47,7 @@ class MusicPlayer():
         # TODO: Use a list comprehension to:
         # set self.playlist to a list of filenames that do not start with "."
         # from the templist
-        self.playlist = [x for x in templist if not x.startswith('.')]
+        self.playlist = [filename for filename in templist if not filename.startswith('.')]
 
     def playsong(self, playlistIndex):
         """Plays the file in the playlist whose index is playlistIndex.
@@ -79,45 +79,22 @@ class MusicPlayer():
         for id, track in enumerate(self.playlist):
             print(f'{id}' + " " + track)
 
-    def searchInput(self, songs):
-        """User prompt with songs from a search."""
-        command = ''
-        while not command == 'q':
-            for id, track in enumerate(songs):
-                print(f'{id}' + " " + track)
-            print("Type the song number to play it,\nor r to refresh the list,\nor s to search the list,\nor q to quit:")
-            raw_command = input("")
-            command = raw_command.strip().casefold()
-            print(raw_command)
-
-            if command == "r":
-                return False
-            elif command == "s":
-                if self.search():
-                    self.stopsong()
-                    return False
-            elif command.isnumeric():
-                num = int(command)
-                if num < len(songs):
-                    selected_song = songs[num]
-                    full_index = self.playlist.index(selected_song)
-                    self.playsong(full_index)
-
-            if not command == 'q':
-                print()
-        return True
-
     def search(self):
         """
         TODO: Explain below in this docstring what an algorithm is.
         Then explain how your search algorithm is implemented in this method.
         Use a least two full sentences of U.S. English.
 
-        An algorithm is a step-by-step procedure that maps inputs to desired outputs. 
-        An algorithm has a finite set of well-defined instructions that solves a variety of problems.
+        WHAT AN ALGORITHM IS:
+        An algorithm is a step-by-step procedure that maps inputs to desired outputs.
+        An algorithm has a finite amount of step.
+        An algorithm has well-defined instructions that are easy to understand.
+        An algorithm can be applied to a wide variety of problems.
+        An algorithm does not run forever; it eventually terminates/exits.
 
+        HOW SEARCH ALGORITHM IS IMPLEMENTED:
         Allows a user to search the playlist with an input string. 
-        Search is not case-sensitive, and prints out all songs that contain the string.
+        Search is not case-sensitive, and temporarily appends all results to the playlist.
         This method leverages the linear search algorithm because the playlist's order does not help us.
         """
         # First refresh the list
@@ -137,11 +114,9 @@ class MusicPlayer():
                     songs.append(song)
             if not songs:
                 raise Exception("No songs were found!")
+            self.playlist = songs
         except Exception as e:
             print(e)
-            return False
-
-        return self.searchInput(songs)
 
     def main(self):
         """TODO: Prompt user and play songs based on typed input."""
@@ -169,9 +144,7 @@ class MusicPlayer():
             if command == "r":
                 self.refreshlist()
             elif command == "s":
-                if self.search():
-                    self.stopsong()
-                    return
+                self.search()
             elif command.isnumeric():
                 num = int(command)
                 if num < len(self.playlist):
