@@ -97,7 +97,7 @@ L1:
 	inc	esi				; point to next byte
 	inc ebx
 	cmp ebx,kbufSize
-	je L2
+	jne L2
 	mov ebx,0
 	L2: ; skips resetting ebx to 0
 	loop	L1
