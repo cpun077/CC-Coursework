@@ -138,7 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <MASM Include="Assignment11.asm" />
+    <MASM Include="LabExercise11.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
