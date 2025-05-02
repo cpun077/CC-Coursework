@@ -51,7 +51,7 @@ main ENDP
 gcd PROC
 ;
 ; calculates greatest common divisor of two unsigned dword integers
-; Recursive Call Stack: EDX, ECX, EBP, ret, b, a
+; Recursive Stack Frame: EDX, ECX, EBP, ret, b, a
 ;
 ; Receives: integers a and b pushed onto the stack
 ; Returns: resulting gcd in EAX
