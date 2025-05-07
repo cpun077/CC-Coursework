@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch8\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EA907F90-C028-4AD0-B270-3769C467B635}|COMSC260_Ch8.vcxproj|C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch8\\LabExercise13.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{EA907F90-C028-4AD0-B270-3769C467B635}|COMSC260_Ch8.vcxproj|solutionrelative:LabExercise13.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{EA907F90-C028-4AD0-B270-3769C467B635}|COMSC260_Ch8.vcxproj|C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch8\\LabExercise14.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EA907F90-C028-4AD0-B270-3769C467B635}|COMSC260_Ch8.vcxproj|solutionrelative:LabExercise14.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LabExercise13.asm",
-              "DocumentMoniker": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch8\\LabExercise13.asm",
-              "RelativeDocumentMoniker": "LabExercise13.asm",
-              "ToolTip": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch8\\LabExercise13.asm",
-              "RelativeToolTip": "LabExercise13.asm",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAhwD8AAAAHAAAAAAAAAA==",
+              "Title": "LabExercise14.asm",
+              "DocumentMoniker": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch8\\LabExercise14.asm",
+              "RelativeDocumentMoniker": "LabExercise14.asm",
+              "ToolTip": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch8\\LabExercise14.asm*",
+              "RelativeToolTip": "LabExercise14.asm*",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwCUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-02T05:48:37.37Z",
+              "WhenOpened": "2025-05-07T21:32:02.995Z",
               "EditorCaption": ""
             }
           ]
