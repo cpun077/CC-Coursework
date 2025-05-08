@@ -134,7 +134,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <MASM Include="LabExercise14.asm" />
+    <MASM Include="Assignment14.asm" />
+    <MASM Include="PrintBoard.asm" />
+    <MASM Include="PrintRow.asm" />
+    <MASM Include="WriteColorBlock.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assignment14.inc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,8 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="LabExercise14.asm">
+    <MASM Include="Assignment14.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="PrintBoard.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="PrintRow.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="WriteColorBlock.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assignment14.inc">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
