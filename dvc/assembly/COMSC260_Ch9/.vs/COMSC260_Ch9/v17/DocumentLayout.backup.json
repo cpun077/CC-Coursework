@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch9\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F9FA012-6847-4D94-934B-57D14D16D8BF}|COMSC260_Ch9.vcxproj|C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch9\\Assignment15.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{2F9FA012-6847-4D94-934B-57D14D16D8BF}|COMSC260_Ch9.vcxproj|solutionrelative:Assignment15.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{2F9FA012-6847-4D94-934B-57D14D16D8BF}|COMSC260_Ch9.vcxproj|C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch9\\Str_remove.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{2F9FA012-6847-4D94-934B-57D14D16D8BF}|COMSC260_Ch9.vcxproj|solutionrelative:Str_remove.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Assignment15.asm",
-              "DocumentMoniker": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch9\\Assignment15.asm",
-              "RelativeDocumentMoniker": "Assignment15.asm",
-              "ToolTip": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch9\\Assignment15.asm*",
-              "RelativeToolTip": "Assignment15.asm*",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGAAAAAUAAAAAAAAAA==",
+              "Title": "Str_remove.asm",
+              "DocumentMoniker": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch9\\Str_remove.asm",
+              "RelativeDocumentMoniker": "Str_remove.asm",
+              "ToolTip": "C:\\Users\\irons\\Documents\\GitHub\\CS-Coursework\\dvc\\assembly\\COMSC260_Ch9\\Str_remove.asm*",
+              "RelativeToolTip": "Str_remove.asm*",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADQAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-14T21:57:11.687Z",
+              "WhenOpened": "2025-05-21T02:30:43.932Z",
               "EditorCaption": ""
             }
           ]
